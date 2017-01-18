@@ -20,9 +20,16 @@
         "enabled": true,
         "clusterForks": "auto",
         "poolAddress": "4A2Gv6uMc3vZsGMTEMnBsgaJMtQeEBCzaigneqJN8bzkTit2Di5MVm2fjE9rfWMz4yMVxSBL3Q9QzbafXUBXzUcANNnjjEn",
-        "blockRefreshInterval": 1000,
+        "blockRefreshInterval": 100,
+        "blockRefreshForce": 100,
         "minerTimeout": 900,
         "ports": [
+            {
+                "port": 443,
+                "difficulty": 20000,
+                "desc": "SSL",
+                "type": "SSL"
+            },
             {
                 "port": 3333,
                 "difficulty": 1000,
