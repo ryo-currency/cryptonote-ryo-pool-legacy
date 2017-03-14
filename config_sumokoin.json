@@ -2,7 +2,7 @@
     "coin": "Sumokoin",
     "symbol": "SUMO",
     "coinUnits": 1000000000,
-    "coinDifficultyTarget": 60,
+    "coinDifficultyTarget": 120,
 
     "logging": {
         "files": {

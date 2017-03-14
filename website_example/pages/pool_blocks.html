@@ -131,8 +131,8 @@
 			    }
 	    }
 
-	    function formatBlockLink(hash){
-            return '<a target="_blank" href="' + getBlockchainUrl(hash) + '">' + hash + '</a>';
+	    function formatBlockLink(hash, height){
+            return '<a target="explorer" href="' + getBlockchainUrl(height) + '">' + hash + '</a>';
         }
 
         var blockStatusClasses = {
@@ -152,7 +152,7 @@
             '<td>' + block.height + '</td>' +
             '<td>' + block.maturity + '</td>' +
             '<td>' + block.difficulty + '</td>' +
-            '<td>' + formatBlockLink(block.hash) + '</td>' +
+            '<td>' + formatBlockLink(block.hash, block.height) + '</td>' +
             '<td>' + formatDate(block.time) + '</td>' +
             '<td>' + formatLuck(block.difficulty, block.shares) + '</td>';
 
