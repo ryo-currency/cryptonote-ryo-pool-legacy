@@ -1,17 +1,17 @@
-var api = "http://poolhost.com:1117";
+var api = "https://pool.sumokoin.com:9118";
 
-var poolHost = "poolhost.com";
+var poolHost = "pool.sumokoin.com";
 
-var irc = "irc.freenode.net/#poolhost";
+var irc = "irc.freenode.net/#sumocoin";
 
-var email = "support@poolhost.com";
+var email = "support@sumominer.com";
 
-var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
+var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "BTC-USD"];
 
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
 
-var blockchainExplorer = "http://explorer.sumokoin.com/block/{id}";
+var blockchainExplorer = "https://explorer.sumokoin.com/block/{id}";
 
-var transactionExplorer = "http://explorer.sumokoin.com/tx/{id}";
+var transactionExplorer = "https://explorer.sumokoin.com/tx/{id}";
 
 var themeCss = "themes/default-theme.css";
