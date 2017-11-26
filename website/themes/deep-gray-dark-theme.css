@@ -245,3 +245,8 @@ a.list-group-item.active:focus {
 .nav-pills > li.active > a:focus {
   background-color: #6d6d6d;
 }
+
+#health_warning {
+  color: red;
+  font-size: large;
+}
