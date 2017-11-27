@@ -196,6 +196,15 @@ Explanation for each field:
             "port": 3335,
             "difficulty": 20000,
             "desc": "High end hardware"
+        },
+        {
+            "port": 3336,
+            "difficulty": 20000,
+            "desc": "High end hardware (SSL protected)",
+            /* When you enable SSL; the server expects that you put the
+               SSL key and cert as the files "key.pem" and "cert.pem" into the
+               directory from which you run the pool server. /*
+            "type": "SSL"
         }
     ],
 
