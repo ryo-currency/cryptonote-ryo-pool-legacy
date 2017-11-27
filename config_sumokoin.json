@@ -29,9 +29,21 @@
                 "desc": "Low end hardware"
             },
             {
+                "port": 3334,
+                "difficulty": 2000,
+                "desc": "Low end hardware (SSL protected)",
+                "type": "SSL"
+            },
+            {
                 "port": 4444,
                 "difficulty": 10000,
                 "desc": "Mid range hardware"
+            },
+            {
+                "port": 4445,
+                "difficulty": 10000,
+                "desc": "Mid range hardware (SSL protected)",
+                "type": "SSL"
             },
             {
                 "port": 5555,
@@ -39,11 +51,24 @@
                 "desc": "High end hardware"
             },
             {
+                "port": 5555,
+                "difficulty": 20000,
+                "desc": "High end hardware (SSL protected)",
+                "type": "SSL"
+            },
+            {
                 "port": 6666,
                 "difficulty": 30000,
                 "desc": "Hidden port",
                 "hidden": true
-            }
+            },
+            {
+                "port": 6667,
+                "difficulty": 30000,
+                "desc": "Hidden port (SSL protected)",
+                "hidden": true,
+                "type": "SSL"
+            },
         ],
         "varDiff": {
             "minDiff": 2000,
