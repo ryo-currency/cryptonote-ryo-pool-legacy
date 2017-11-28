@@ -1,8 +1,25 @@
-cryptonote-sumokoin-pool
-====================
+An updated cryptonote-sumokoin-pool fork
+========================================
 
 High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
+
+
+#### What has changed ?
+
+##### Health monitoring
+
+A new /health API handler was added and can be called by miners to learn
+whether the pool is healthy (e.g wallet is reachable). The UI was also
+updated and calles this handler regularly: when the health is not OK a
+red message will inform pool visitors about this.
+
+##### Proxy X-Forwarded-For support
+
+In the configuration you can indicate whether your pool deployment is
+behind a proxy. When you do this than the pool will take the client IP
+(which can give unauthenticated access to the admin interface) from the
+X-Forwarded-IP header that the proxy sets.
 
 
 
