@@ -39,19 +39,19 @@
                 "desc": "High end hardware"
             },
             {
-                "port": 4446,
+                "port": 4447,
                 "difficulty": 5000,
                 "desc": "SSL enabled Low end hardware",
 		"type": "SSL"
             },
             {
-                "port": 4447,
+                "port": 4448,
                 "difficulty": 10000,
                 "desc": "SSL enabled mid range hardware",
 		"type": "SSL"
             },
             {
-                "port": 4448,
+                "port": 4449,
                 "difficulty": 20000,
                 "desc": "SSL enabled High end hardware",
 		"type": "SSL"
