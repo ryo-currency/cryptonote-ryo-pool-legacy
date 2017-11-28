@@ -1,5 +1,6 @@
 var api = "https://pool.sumokoin.com:9118";
 
+
 var poolHost = "pool.sumokoin.com";
 
 var irc = "irc.freenode.net/#sumocoin";
