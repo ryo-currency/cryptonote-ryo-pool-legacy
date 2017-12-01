@@ -121,6 +121,10 @@
         "port": 6379
     },
 
+    "email": {
+      "api_key": ""
+    }
+
     "monitoring": {
         "daemon": {
             "checkInterval": 60,
