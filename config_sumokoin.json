@@ -128,7 +128,7 @@
       "from_address": "",
       "template_dir": "email_templates",
       "domain": "pool.domain.here"
-    }
+    },
 
     "monitoring": {
         "daemon": {
