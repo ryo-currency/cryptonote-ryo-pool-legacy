@@ -148,7 +148,12 @@
     },
 
     "email": {
-      "api_key": ""
+      "enabled": false,
+      "api_key": "",
+      "api_domain": "mg.yourdomain",
+      "from_address": "",
+      "template_dir": "email_templates",
+      "domain": "pool.domain.here"
     }
 
     "monitoring": {
