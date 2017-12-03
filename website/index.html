@@ -278,6 +278,24 @@
         });
     }
 
+    function fetchHealthState() {
+        $.ajax({
+            url: api + '/health',
+            dataType: 'json',
+            cache: 'false'
+        }).done(function(data){
+            if (data.status == "OK") {
+	        $('#health_warning').hide(100);
+	    } else {
+	        $('#health_warning').show(100);
+            }
+        });
+    }
+    // Every 5 seconds check the health status.
+    setInterval(fetchHealthState, 5000);
+    fetchHealthState();
+
+
     function floatToString(float) {
         return float.toFixed(6).replace(/[0\.]+$/, '');
     }
@@ -385,6 +403,9 @@
 </div>
 
 <footer>
+    <div id="health_warning">
+        This pool is not healthy! Contact the admin for support.
+    </div>
     <div class="text-muted">
         Powered by <a target="_blank" href="//cryptonotemining.org"><i class="fa fa-github"></i> cryptonote-universal-pool</a>
         <span id="poolVersion"></span>
