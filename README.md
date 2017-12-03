@@ -276,6 +276,7 @@ Explanation for each field:
     "blocks": 30, //amount of blocks to send at a time
     "payments": 30, //amount of payments to send at a time
     "password": "test" //password required for admin stats
+    "trust_proxy_ip": false //trust the X-Forwarded-For header to set the client IP. This should be used in combination with reverse proxies.
 },
 
 /* Coin daemon connection details. */
