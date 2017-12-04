@@ -27,7 +27,7 @@
 			return regex.test(email);
 		}
 
-    function editEmailAddress(email, address, action) {
+    function editEmailAddress(email, address, ip, action) {
 				if (address.length != 99) {
             $('#action_update_message').text('Please double check your Sumo address');
             return;
@@ -39,7 +39,7 @@
         }
 
         $.ajax({
-            url: api + '/set_notification?address=' + address + '&email=' + email + '&action=' + action,
+            url: api + '/set_notification?address=' + address + '&ip=' + ip + '&email=' + email + '&action=' + action,
             dataType: 'json',
             cache: 'false'
         }).done(function(data){
@@ -51,7 +51,7 @@
         });
     }
 
-    function setEmailAddress(address) {
+    function getEmailAddress(address) {
         $.ajax({
             url: api + '/get_notification?address=' + address,
             dataType: 'json',
@@ -68,13 +68,15 @@
     $('#enableButton').click(function(){
         var email = $('#yourEmail').val();
         var address = $('#yourAddress').val();
-				editEmailAddress(email, address, 'upsert');
+        var ip = $('#yourIP').val();
+				editEmailAddress(email, address, ip, 'upsert');
     });
 
     $('#disableButton').click(function(){
         var email = $('#yourEmail').val();
         var address = $('#yourAddress').val();
-				editEmailAddress(email, address, 'delete');
+        var ip = $('#yourIP').val();
+				editEmailAddress(email, address, ip, 'delete');
     });
 
 
@@ -97,6 +99,10 @@
         <input class="form-control" id="yourEmail" type="text" placeholder="Enter Your email">
     </div>
     <div class="form-group">
+        <label for="yourAddress">Miner IP address:</label>
+        <input class="form-control" id="yourIP" type="text" placeholder="An IP address your miners use (any)">
+    </div>
+    <div class="form-group">
         <span class="input-group-btn">
             <button class="btn btn-default" type="button" id="enableButton">
                 <span><i class="fa fa-check"></i> Enable</span>
@@ -109,8 +115,6 @@
 </div>
 
 <script>
-
-
     currentPage = {
         destroy: function(){
         },
@@ -124,7 +128,7 @@
 
     if (address){
         $('#yourAddress').val(address);
-        setEmailAddress(address);
+        getEmailAddress(address);
     }
 
 </script>
