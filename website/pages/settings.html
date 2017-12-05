@@ -15,10 +15,14 @@
         font-family: 'Inconsolata', monospace;
         font-size: 0.9em;
     }
-    #addressError{
-        color: red;
+    #yourIP{
+        max-width: 25%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: right;
+        font-family: 'Inconsolata', monospace;
+        font-size: 0.9em;
     }
-
 </style>
 <script>
 
@@ -30,11 +34,13 @@
     function editEmailAddress(email, address, ip, action) {
 				if (address.length != 99) {
             $('#action_update_message').text('Please double check your Sumo address');
+            $('#action_update_message').removeClass().addClass('alert alert-warning');
             return;
         }
 
 				if (!isEmail(email)) {
             $('#action_update_message').text('That doesn\'t look like an email buddy.');
+            $('#action_update_message').removeClass().addClass('alert alert-danger');
             return;
         }
 
@@ -45,8 +51,10 @@
         }).done(function(data){
             if (data.status == "done") {
 								$('#action_update_message').text('Email entry was ' + (action == 'delete' ? 'removed' : 'added'));
+                $('#action_update_message').removeClass().addClass('alert alert-success');
 						} else {
-								$('#action_update_message').text('Something went wrong: ' + data.status);
+								$('#action_update_message').text('OOPS! Something went wrong: ' + data.status);
+                $('#action_update_message').removeClass().addClass('alert alert-danger');
             }
         });
     }
@@ -63,7 +71,6 @@
           }
         });
     }
-
 
     $('#enableButton').click(function(){
         var email = $('#yourEmail').val();
@@ -87,8 +94,13 @@
     This pool will send out notification whenever a payout happens. To
     receive notications; enter your wallet address (the one used by your
     miners) and your email below.
+
+    In order to get a little more confidence that the wallet address is yours;
+    we ask you to give one of the IP addresses that is used by your miner. If
+    you mine from your home network then you can find the IP <a
+     href="https://www.google.ch/search?q=whats+my+ip" target="_blank">here</a>.
     <div>
-      <span id="action_update_message"></span>
+      <div id="action_update_message" role="alert" ></div>
     </div>
     <div class="form-group">
         <label for="yourAddress">Sumo address:</label>
