@@ -246,3 +246,8 @@ a.list-group-item.active:focus {
   color: #fff;
   background-color: #00863b;
 }
+
+#health_warning {
+  color: red;
+  font-size: large;
+}
