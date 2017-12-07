@@ -68,7 +68,7 @@
                 "desc": "Hidden port (SSL protected)",
                 "hidden": true,
                 "type": "SSL"
-            }
+            },
         ],
         "varDiff": {
             "minDiff": 2000,
