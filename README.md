@@ -181,6 +181,11 @@ Explanation for each field:
     /* How many seconds until we consider a miner disconnected. */
     "minerTimeout": 900,
 
+    /* The location of the SSL key and certificate. These two are only
+       required when you enable an SSL enabled pool port. */
+    "sslKey": "key.pem",
+    "sslCert": "cert.pem",
+
     "ports": [
         {
             "port": 3333, //Port for mining apps to connect to
@@ -258,7 +263,7 @@ Explanation for each field:
     "denomination": 10000000, //truncate to this precision and store remainder
 	"useDynamicTransferFee": true, // use (simple) dynamic transfer fee
 	"transferFeePerPayee": 4000000, // dynamic transfer fee per payee/transaction
-	"minerPayFee": true // miner pays (dynamic) transfer fee instead of pool owner 
+	"minerPayFee": true // miner pays (dynamic) transfer fee instead of pool owner
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -467,8 +472,8 @@ the Node.js modules, and any config files that may have been changed.
 ### Setting up Testnet
 
 Monero does have a testnet. Call daemon and simplewallet with --tesnet to connect to it.
-Downloading the testnet blockchain may still take a while to start usint testnet, so you can use this excellent 
-tutorial http://moneroexamples.github.io/private-testnet/ to set up a private testnet. Should work with other 
+Downloading the testnet blockchain may still take a while to start usint testnet, so you can use this excellent
+tutorial http://moneroexamples.github.io/private-testnet/ to set up a private testnet. Should work with other
 coins, too, but below are original testnet instructions by server43 for reference, too.
 
 For cryptonote based coins that don't have a testnet mode (yet), you can effectively create a testnet with the following steps:
@@ -516,8 +521,8 @@ Credits
 * [wallet42](http://moneropool.com) - Funded development of payment denominating and min threshold feature
 * [Wolf0](https://bitcointalk.org/index.php?action=profile;u=80740) - Helped try to deobfuscate some of the daemon code for getting a bug fixed
 * [Tacotime](https://bitcointalk.org/index.php?action=profile;u=19270) - helping with figuring out certain problems and lead the bounty for this project's creation
-* [fancoder] (https://github.com/fancoder) Initial cryptonote-universal-pool creator 
- * BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`- 
+* [fancoder] (https://github.com/fancoder) Initial cryptonote-universal-pool creator
+ * BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`-
  * MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
 * [clintar] (https://github.com/clintar) Updates to support nodejs >0.10 and continuing updates
 License
