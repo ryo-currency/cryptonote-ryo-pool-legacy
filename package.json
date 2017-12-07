@@ -14,7 +14,6 @@
         "cli-color": "*",
         "dateformat": "*",
         "base58-native": "*",
-        "mailgun.js": "*",
         "multi-hashing": "git://github.com/clintar/node-multi-hashing.git#Nan-2.0",
         "cryptonote-util": "git://github.com/M5M400/node-cryptonote-util.git#xmr-Nan-2.0"
     },
