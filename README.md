@@ -323,6 +323,17 @@ Explanation for each field:
     "port": 6379
 }
 
+/* Email configuration */
+"email": {
+  "enabled": false,
+  "api_key": "",                 // Your Mailgun.com API key.
+  "api_domain": "mg.yourdomain", // The domain you registered at Mailgun.
+  "from_address": "",            // The email address to which users can reply.
+  "template_dir": "email_templates",
+  "domain": "pool.domain.here"   // Used for links in the email.
+},
+
+
 /* Monitoring RPC services. Statistics will be displayed in Admin panel */
 "monitoring": {
     "daemon": {
