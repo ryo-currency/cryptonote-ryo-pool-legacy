@@ -8,7 +8,6 @@
         font-size: 0.9em;
     }
     #yourEmail{
-        max-width: 25%;
         overflow: hidden;
         text-overflow: ellipsis;
         vertical-align: right;
@@ -16,7 +15,6 @@
         font-size: 0.9em;
     }
     #yourIP{
-        max-width: 25%;
         overflow: hidden;
         text-overflow: ellipsis;
         vertical-align: right;
@@ -72,6 +70,34 @@
         });
     }
 
+    function getPayoutLevel(address) {
+        $.ajax({
+            url: api + '/get_miner_payout_level?address=' + address,
+            dataType: 'json',
+            cache: 'false'
+        }).done(function(data){
+          if (data.level != undefined) {
+            $('#yourPayoutRate').val(data.level);
+          }
+        });
+    }
+
+    function setPayoutLevel(ip, address, level) {
+        $.ajax({
+            url: api + '/set_miner_payout_level?address=' + address + '&ip=' + ip + '&level=' + level,
+            dataType: 'json',
+            cache: 'false'
+        }).done(function(data){
+          if (data.status == 'done') {
+            $('#action_update_message').text('Done! Your payout level was set');
+            $('#action_update_message').removeClass().addClass('alert alert-success');
+          } else {
+						$('#action_update_message').text('OOPS! Something went wrong: ' + data.status);
+            $('#action_update_message').removeClass().addClass('alert alert-danger');
+          }
+        });
+    }
+
     $('#enableButton').click(function(){
         var email = $('#yourEmail').val();
         var address = $('#yourAddress').val();
@@ -86,14 +112,17 @@
 				editEmailAddress(email, address, ip, 'delete');
     });
 
+    $('#payoutSetButton').click(function(){
+        var address = $('#yourAddress').val();
+        var ip = $('#yourIP').val();
+        var level = $('#yourPayoutRate').val();
+				setPayoutLevel(ip, address, level);
+    });
 
 </script>
 
 <div class="stats">
-    <h3>Enable email notifications</h3>
-    This pool will send out notification whenever a payout happens. To
-    receive notications; enter your wallet address (the one used by your
-    miners) and your email below.<br><br>
+    <h2>Verification fields</h2>
     In order to get a little more confidence that the wallet address is yours;
     we ask you to give one of the IP addresses that is used by your miner. If
     you mine from your home network then you can find the IP <a
@@ -102,27 +131,52 @@
       <div id="action_update_message" role="alert" ></div>
     </div>
     <div class="form-group">
-        <label for="yourAddress">Sumo address:</label>
-        <input class="form-control" id="yourAddress" type="text" placeholder="Enter Your Address">
+        <label class="col-sm-2 col-form-label col-form-label-lg" for="yourAddress">Sumo address:</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="yourAddress" type="text" placeholder="Enter Your Address">
+        </div>
     </div>
     <div class="form-group">
-        <label for="yourAddress">Email address:</label>
-        <input class="form-control" id="yourEmail" type="text" placeholder="Enter Your email">
+        <label class="col-sm-2 col-form-label col-form-label-lg" for="yourAddress">Miner IP address:</label>
+        <div class="col-sm-3">
+          <input class="form-control" id="yourIP" type="text" placeholder="An IP address your miners use (any)">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="yourAddress">Miner IP address:</label>
-        <input class="form-control" id="yourIP" type="text" placeholder="An IP address your miners use (any)">
+    <br>
+    <br>
+    <h2>Enable email notifications</h2>
+    This pool will send out notification whenever a payout happens.
+    <div>
+        <label class="col-sm-2 col-form-label col-form-label-lg" for="yourAddress">Email address: </label>
+        <div class="col-sm-3">
+          <input class="form-control" id="yourEmail" type="text" placeholder="Enter Your email">
+        </div>
+        <button class="btn btn-default" type="button" id="enableButton">
+            <span><i class="fa fa-check"></i> Enable</span>
+        </button>
+        <button class="btn btn-default" type="button" id="disableButton">
+            <span><i class="fa fa-ban"></i> Disable</span>
+        </button>
     </div>
-    <div class="form-group">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button" id="enableButton">
-                <span><i class="fa fa-check"></i> Enable</span>
-            </button>
-            <button class="btn btn-default" type="button" id="disableButton">
-                <span><i class="fa fa-ban"></i> Disable</span>
+    <br>
+    <h2>Set you minimal payout level</h2>
+    If you prefer a higher payout level than the pool's default than this is
+    where you can change it for your miners. The amount of Sumo you indicate
+    here will become the minimum amount of payouts you receive.
+    <div>
+        <label class="col-sm-2 col-form-label col-form-label-lg" for="yourPayoutRate">Minimum payout:
+           <span data-toggle="tooltip" title="Only receive payments that are this amount of Sumo or bigger"
+                 class="fa fa-question-circle">
+           </span>
+        </label>
+        <div class="col-sm-2">
+          <input class="form-control" id="yourPayoutRate" type="number" value="0.5">
+        </div>
+        <span>
+            <button class="btn btn-default" type="button" id="payoutSetButton">
+                <span><i class="fa fa-check"></i> Set</span>
             </button>
         </span>
-    </div>
 </div>
 
 <script>
@@ -140,6 +194,7 @@
     if (address){
         $('#yourAddress').val(address);
         getEmailAddress(address);
+        getPayoutLevel(address);
     }
 
 </script>
