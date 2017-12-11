@@ -102,21 +102,21 @@
         var email = $('#yourEmail').val();
         var address = $('#yourAddress').val();
         var ip = $('#yourIP').val();
-				editEmailAddress(email, address, ip, 'upsert');
+        editEmailAddress(email, address, ip, 'upsert');
     });
 
     $('#disableButton').click(function(){
         var email = $('#yourEmail').val();
         var address = $('#yourAddress').val();
         var ip = $('#yourIP').val();
-				editEmailAddress(email, address, ip, 'delete');
+        editEmailAddress(email, address, ip, 'delete');
     });
 
     $('#payoutSetButton').click(function(){
         var address = $('#yourAddress').val();
         var ip = $('#yourIP').val();
         var level = $('#yourPayoutRate').val();
-				setPayoutLevel(ip, address, level);
+        setPayoutLevel(ip, address, level);
     });
 
 </script>
@@ -145,7 +145,7 @@
     <br>
     <br>
     <h2>Enable email notifications</h2>
-    This pool will send out notification whenever a payout happens.
+    This pool will send out email notification whenever a payout happens.
     <div>
         <label class="col-sm-2 col-form-label col-form-label-lg" for="yourAddress">Email address: </label>
         <div class="col-sm-3">
@@ -160,14 +160,11 @@
     </div>
     <br>
     <h2>Set you minimal payout level</h2>
-    If you prefer a higher payout level than the pool's default than this is
+    If you prefer a higher payout level than the pool's default then this is
     where you can change it for your miners. The amount of Sumo you indicate
-    here will become the minimum amount of payouts you receive.
+    here will become the minimum amount for pool payments to your address.
     <div>
         <label class="col-sm-2 col-form-label col-form-label-lg" for="yourPayoutRate">Minimum payout:
-           <span data-toggle="tooltip" title="Only receive payments that are this amount of Sumo or bigger"
-                 class="fa fa-question-circle">
-           </span>
         </label>
         <div class="col-sm-2">
           <input class="form-control" id="yourPayoutRate" type="number" value="0.5">
