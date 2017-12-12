@@ -68,7 +68,7 @@
                 "desc": "Hidden port (SSL protected)",
                 "hidden": true,
                 "type": "SSL"
-            },
+            }
         ],
         "varDiff": {
             "minDiff": 2000,
@@ -129,7 +129,7 @@
         "blocks": 30,
         "payments": 30,
         "password": "your_password",
-        "trust_proxy_ip: false
+        "trust_proxy_ip": false
     },
 
     "daemon": {
@@ -145,15 +145,6 @@
     "redis": {
         "host": "127.0.0.1",
         "port": 6379
-    },
-
-    "email": {
-      "enabled": false,
-      "api_key": "",
-      "api_domain": "mg.yourdomain",
-      "from_address": "",
-      "template_dir": "email_templates",
-      "domain": "pool.domain.here"
     },
 
     "monitoring": {
