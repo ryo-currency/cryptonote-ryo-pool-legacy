@@ -4,7 +4,7 @@ An updated cryptonote-sumokoin-pool fork
 High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
-#### Recent changes
+## Recent changes
 
 ##### Health monitoring
 A new /health API handler was added and can be called by miners to learn
@@ -30,7 +30,7 @@ Miner can configure the minimum amount of sumo for their payments.
 You can now mine using a subaddress as your login.
 
 
-#### Basic features
+## Basic features
 
 * TCP (stratum-like) protocol for server-push based jobs
   * Compared to old HTTP protocol, this has a higher hash rate, lower network/CPU server load, lower orphan
@@ -58,7 +58,7 @@ You can now mine using a subaddress as your login.
 * Support for configuration using tls (https) in pool code to allowing the same for web frontend
 * Multiple modules can be started on command line instead of one or none.
 * Onishin's keepalive function https://github.com/perl5577/cpuminer-multi/commit/0c8aedb
-#### Extra features
+## Extra features
 
 * Admin panel
   * Aggregated pool statistics
@@ -76,27 +76,27 @@ You can now mine using a subaddress as your login.
 * Prevent "transaction is too big" error with "payments.maxTransactionAmount" option
 * Option to enable (simple) dynamic fee based on number of payees per transaction and option to have miner pay transfer fee instead of pool owner (applied to dynamic fee only)
 
-### Community / Support
+## Community / Support
 
 For support please join our development Telegram group:
 https://t.me/joinchat/Hkpz6hIFOy4qGqMHTDzn1A
 
 Or reach out to the [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
 
-#### Pools Using This Software
+## Pools Using This Software
 
 * https://pool.sumokoin.com
 * https://pool.sumokoin.ch
 
 More pools can be found on [sumopools.com](https://www.sumopools.com)
 
-#### Usage
+## Usage
 
 Visit the usage guide here.
 [Visit the usage guide here](https://github.com/SadBatman/cryptonote-sumokoin-pool/blob/master/USAGE.md)
 
 
-#### License
+## License
 -------
 Released under the GNU General Public License v2
 
