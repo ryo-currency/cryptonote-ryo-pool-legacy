@@ -10,7 +10,24 @@ require('./lib/configReader.js');
 require('./lib/logger.js');
 
 
-global.redisClient = redis.createClient(config.redis.port, config.redis.host);
+var logSystem = 'master';
+global.redisClient = redis.createClient(config.redis.port, config.redis.host, {
+    retry_strategy: function (options) {
+        if (options.total_retry_time > 1000 * 60 * 30) {
+            // End reconnecting after a specific timeout and flush all commands
+            // with a individual error
+            return new Error('Retry time exhausted');
+        }
+        if (options.attempt > 10) {
+            // End reconnecting with built in error
+						log('error', logSystem, 'Reddis client exceeded max retries');
+            return undefined;
+        }
+				log('error', logSystem, 'Reddis client needs to retry (attempt: %d)', [options.attempt]);
+        // Reconnect after this many seconds.
+        return options.attempt * 1000;
+    }
+});
 
 
 if (cluster.isWorker){
@@ -38,7 +55,6 @@ if (cluster.isWorker){
     return;
 }
 
-var logSystem = 'master';
 require('./lib/exceptionWriter.js')(logSystem);
 
 
