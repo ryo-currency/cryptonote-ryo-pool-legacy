@@ -19,56 +19,43 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "Sumoo64zh7dRFyB8dgDWZMLmzKBgGXYWZCG4NBF2VcvzEuiSQpMjyyiYJ1Ra696pZu56PPFQNBDdB1rZjyeX1RVKeWZgHg7pTxj",
+        "poolAddress": "Sumoo4FoergLZXMmDgDfaEQ1VKoygUe5S2k9HqFbzVAu2xhiW9A2w99J2kR8hkMiCZ4NbvdKrQ4sM7MzYQEopZGH5jfyAWFYEz9",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
         "ports": [
             {
-                "port": 3333,
-                "difficulty": 2000,
-                "desc": "Low end hardware"
-            },
-            {
-                "port": 3334,
-                "difficulty": 2000,
-                "desc": "Low end hardware (SSL protected)",
-                "type": "SSL"
-            },
-            {
                 "port": 4444,
-                "difficulty": 10000,
-                "desc": "Mid range hardware"
+                "difficulty": 5000,
+                "desc": "Low end hardware"
             },
             {
                 "port": 4445,
                 "difficulty": 10000,
-                "desc": "Mid range hardware (SSL protected)",
-                "type": "SSL"
+                "desc": "Mid range hardware"
             },
             {
-                "port": 5555,
+                "port": 4446,
                 "difficulty": 20000,
                 "desc": "High end hardware"
             },
             {
-                "port": 5555,
+                "port": 4447,
+                "difficulty": 5000,
+                "desc": "SSL enabled Low end hardware",
+		"type": "SSL"
+            },
+            {
+                "port": 4448,
+                "difficulty": 10000,
+                "desc": "SSL enabled mid range hardware",
+		"type": "SSL"
+            },
+            {
+                "port": 4449,
                 "difficulty": 20000,
-                "desc": "High end hardware (SSL protected)",
-                "type": "SSL"
-            },
-            {
-                "port": 6666,
-                "difficulty": 30000,
-                "desc": "Hidden port",
-                "hidden": true
-            },
-            {
-                "port": 6667,
-                "difficulty": 30000,
-                "desc": "Hidden port (SSL protected)",
-                "hidden": true,
-                "type": "SSL"
-            },
+                "desc": "SSL enabled High end hardware",
+		"type": "SSL"
+            }
         ],
         "varDiff": {
             "minDiff": 2000,
@@ -100,10 +87,10 @@
     "payments": {
         "enabled": true,
         "interval": 10800,
-        "maxAddresses": 30,
-        "mixin": 12,
+        "maxAddresses": 10,
+        "mixin": 9,
         "transferFee": 10000000,
-        "minPayment": 2000000000,
+        "minPayment": 500000000,
         "maxTransactionAmount": 500000000000,
         "denomination": 10000000,
         "useDynamicTransferFee": true,
@@ -115,9 +102,9 @@
         "enabled": true,
         "interval": 30,
         "depth": 60,
-        "poolFee": 1.4,
+        "poolFee": 0.5,
         "devDonation": 0,
-        "coreDevDonation": 0.1,
+        "coreDevDonation": 0,
         "extraFeaturesDevDonation":0
     },
 
@@ -127,9 +114,9 @@
         "updateInterval": 20,
         "port": 8118,
         "blocks": 30,
+	"host": "127.0.0.1",
         "payments": 30,
-        "password": "your_password",
-        "trust_proxy_ip: false
+        "password": "your_password"
     },
 
     "daemon": {
@@ -145,15 +132,6 @@
     "redis": {
         "host": "127.0.0.1",
         "port": 6379
-    },
-
-    "email": {
-      "enabled": false,
-      "api_key": "",
-      "api_domain": "mg.yourdomain",
-      "from_address": "",
-      "template_dir": "email_templates",
-      "domain": "pool.domain.here"
     },
 
     "monitoring": {
