@@ -1,6 +1,8 @@
 cryptonote-sumokoin-pool
 ====================
 
+**For the latest features and improvements, please use source code from @SadBatman repo  https://github.com/SadBatman/cryptonote-sumokoin-pool/**
+
 High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
