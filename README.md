@@ -21,6 +21,14 @@ behind a proxy. When you do this than the pool will take the client IP
 (which can give unauthenticated access to the admin interface) from the
 X-Forwarded-IP header that the proxy sets.
 
+#####  Email notifications
+
+Miners can configure an email to receive notifications whenever a new
+block is found.
+
+#####  Miner can configure payout minimum
+
+Miner can configure the minimum amount of sumo for their payments.
 
 
 #### Table of Contents
