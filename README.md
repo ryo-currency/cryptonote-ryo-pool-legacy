@@ -1,35 +1,36 @@
-cryptonote-sumokoin-pool
-====================
-
-**For the latest features and improvements, please use source code from @SadBatman repo  https://github.com/SadBatman/cryptonote-sumokoin-pool/**
+An updated cryptonote-sumokoin-pool fork
+========================================
 
 High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
+## Recent changes
+
+##### Health monitoring
+A new /health API handler was added and can be called by miners to learn
+whether the pool is healthy (e.g wallet is reachable). The UI was also
+updated and calles this handler regularly: when the health is not OK a
+red message will inform pool visitors about this.
+
+##### Proxy X-Forwarded-For support
+In the configuration you can indicate whether your pool deployment is
+behind a proxy. When you do this than the pool will take the client IP
+(which can give unauthenticated access to the admin interface) from the
+X-Forwarded-IP header that the proxy sets.
+
+##### Email notifications
+Miners can configure an email to receive notifications whenever they receive a
+payment. More notifications will be added in the future (e.g. when a block is
+found).
+
+##### Miner can configure payout minimum
+Miner can configure the minimum amount of sumo for their payments.
+
+##### Subaddresses support
+You can now mine using a subaddress as your login.
 
 
-#### Table of Contents
-* [Features](#features)
-* [Community Support](#community--support)
-* [Pools Using This Software](#pools-using-this-software)
-* [Usage](#usage)
-  * [Requirements](#requirements)
-  * [Downloading & Installing](#1-downloading--installing)
-  * [Configuration](#2-configuration)
-  * [Configure Easyminer](#3-optional-configure-cryptonote-easy-miner-for-your-pool)
-  * [Starting the Pool](#4-start-the-pool)
-  * [Host the front-end](#5-host-the-front-end)
-  * [Customizing your website](#6-customize-your-website)
-  * [Upgrading](#upgrading)
-* [Setting up Testnet](#setting-up-testnet)
-* [JSON-RPC Commands from CLI](#json-rpc-commands-from-cli)
-* [Monitoring Your Pool](#monitoring-your-pool)
-* [Donations](#donations)
-* [Credits](#credits)
-* [License](#license)
-
-
-#### Basic features
+## Basic features
 
 * TCP (stratum-like) protocol for server-push based jobs
   * Compared to old HTTP protocol, this has a higher hash rate, lower network/CPU server load, lower orphan
@@ -57,7 +58,8 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * Support for configuration using tls (https) in pool code to allowing the same for web frontend
 * Multiple modules can be started on command line instead of one or none.
 * Onishin's keepalive function https://github.com/perl5577/cpuminer-multi/commit/0c8aedb
-#### Extra features
+
+## Extra features
 
 * Admin panel
   * Aggregated pool statistics
@@ -74,20 +76,6 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * Set fixed difficulty on miner client by passing "address" param with ".[difficulty]" postfix
 * Prevent "transaction is too big" error with "payments.maxTransactionAmount" option
 * Option to enable (simple) dynamic fee based on number of payees per transaction and option to have miner pay transfer fee instead of pool owner (applied to dynamic fee only)
-
-### Community / Support
-
-* [CryptoNote Technology](https://cryptonote.org)
-* [CryptoNote Forum](https://forum.cryptonote.org/)
-* [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
-
-#### Pools Using This Software
-
-* http://xmr.poolto.be run by PCFil
-* http://xmr.cncoin.farm run by clintar
-
-Usage
-===
 
 #### Requirements
 * Coin daemon(s) (find the coin's repo and build latest version from source)
@@ -528,6 +516,29 @@ Credits
  * MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
 * [clintar] (https://github.com/clintar) Updates to support nodejs >0.10 and continuing updates
 License
+=======
+## Community / Support
+
+For support please join our development Telegram group:
+https://t.me/joinchat/Hkpz6hIFOy4qGqMHTDzn1A
+
+Or reach out to the [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
+
+## Pools Using This Software
+
+* https://pool.sumokoin.com
+* https://pool.sumokoin.ch
+
+More pools can be found on [sumopools.com](https://www.sumopools.com)
+
+## Usage
+
+Visit the usage guide here.
+[Visit the usage guide here](https://github.com/SadBatman/cryptonote-sumokoin-pool/blob/master/USAGE.md)
+
+
+## License
+>>>>>>> batman/master
 -------
 Released under the GNU General Public License v2
 
