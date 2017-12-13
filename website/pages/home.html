@@ -52,6 +52,9 @@
     .yourStats{
         display: none;
     }
+    .nextPaymentEstimate {
+        display: none;
+    }
     #yourAddressDisplay{
         display: inline-block;
         max-width: 100%;
@@ -259,7 +262,7 @@
             <!-- <div class="yourStats"><i class="fa fa-key"></i> Address: <span id="yourAddressDisplay"></span></div> -->
             <div class="yourStats"><i class="fa fa-bank"></i> Pending Balance: <span id="yourPendingBalance"></span></div>
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
-            <div class="yourStats"><i class="fa fa-money"></i> Next payment: 
+            <div id="nextPaymentEstimate" class="yourStats"><i class="fa fa-money"></i> Next payment: 
                 <span id="yourNextPaymentEstimate"> SUMO</span>
                 <span data-toggle="tooltip" title="A rough estimate of the payment you'd get if a block was found RIGHT NOW."
                       class="fa fa-question-circle">
@@ -544,7 +547,13 @@
                     updateText('yourHashes', (data.stats.hashes || 0).toString());
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
-                    updateText('yourNextPaymentEstimate', data.stats.payout_estimate);
+
+                    if (data.stats.payout_estimate != undefined) {
+                        if (!$('#nextPaymentEstimate').is(":visible")) {
+                            $('#nextPaymentEstimate').show();
+                        }
+                        updateText('yourNextPaymentEstimate', data.stats.payout_estimate);
+                    }
 
                     renderPayments(data.payments);
 
