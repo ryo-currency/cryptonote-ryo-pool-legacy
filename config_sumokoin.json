@@ -111,7 +111,8 @@
         "denomination": 10000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
-        "minerPayFee": true
+        "minerPayFee": true,
+        "blockReward": 36.45
     },
 
     "blockUnlocker": {
