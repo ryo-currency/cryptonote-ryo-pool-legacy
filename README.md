@@ -538,7 +538,6 @@ Visit the usage guide here.
 
 
 ## License
->>>>>>> batman/master
 -------
 Released under the GNU General Public License v2
 
