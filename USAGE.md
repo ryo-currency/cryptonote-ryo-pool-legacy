@@ -96,6 +96,14 @@ Explanation for each field:
     /* How many seconds until we consider a miner disconnected. */
     "minerTimeout": 900,
 
+    /* These cryptonote address prefixes are used to check whether the
+       miner supplied a valid address. The values below are for sumokoin
+       wallet and subaddresses. If you use a different coin than you must
+       update the values here. */
+    "allowedMinerAddressPrefixes": [
+      "2864026", "536986"
+    ],
+
     "ports": [
         {
             "port": 3333, //Port for mining apps to connect to
