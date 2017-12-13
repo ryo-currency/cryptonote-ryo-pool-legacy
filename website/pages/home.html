@@ -259,6 +259,12 @@
             <!-- <div class="yourStats"><i class="fa fa-key"></i> Address: <span id="yourAddressDisplay"></span></div> -->
             <div class="yourStats"><i class="fa fa-bank"></i> Pending Balance: <span id="yourPendingBalance"></span></div>
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
+            <div class="yourStats"><i class="fa fa-money"></i> Next payment est.:
+                <span id="yourNextPaymentEstimate"></span>
+                <span data-toggle="tooltip" title="A rough estimate of the payment you'd get if a block was found RIGHT NOW."
+                      class="fa fa-question-circle">
+                </span>
+            </div>
             <div class="yourStats"><i class="fa fa-clock-o"></i> Last Share Submitted: <span id="yourLastShare"></span></div>
             <div class="yourStats"><i class="fa fa-tachometer"></i> Hash Rate: <span id="yourHashrateHolder"></span></div>
             <div class="yourStats"><i class="fa fa-cloud-upload"></i> Total Hashes Submitted: <span id="yourHashes"></span></div>
@@ -539,6 +545,7 @@
                     updateText('yourHashes', (data.stats.hashes || 0).toString());
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
+                    updateText('yourNextPaymentEstimate', data.stats.payout_estimate);
 
                     renderPayments(data.payments);
 
