@@ -52,6 +52,9 @@
     .yourStats{
         display: none;
     }
+    .nextPaymentEstimate {
+        display: none;
+    }
     #yourAddressDisplay{
         display: inline-block;
         max-width: 100%;
@@ -259,6 +262,12 @@
             <!-- <div class="yourStats"><i class="fa fa-key"></i> Address: <span id="yourAddressDisplay"></span></div> -->
             <div class="yourStats"><i class="fa fa-bank"></i> Pending Balance: <span id="yourPendingBalance"></span></div>
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
+            <div id="nextPaymentEstimate" class="yourStats"><i class="fa fa-money"></i> Next payment: 
+                <span id="yourNextPaymentEstimate"> SUMO</span>
+                <span data-toggle="tooltip" title="A rough estimate of the payment you'd get if a block was found RIGHT NOW."
+                      class="fa fa-question-circle">
+                </span>
+            </div>
             <div class="yourStats"><i class="fa fa-clock-o"></i> Last Share Submitted: <span id="yourLastShare"></span></div>
             <div class="yourStats"><i class="fa fa-tachometer"></i> Hash Rate: <span id="yourHashrateHolder"></span></div>
             <div class="yourStats"><i class="fa fa-cloud-upload"></i> Total Hashes Submitted: <span id="yourHashes"></span></div>
@@ -501,12 +510,11 @@
         if (xhrAddressPoll) xhrAddressPoll.abort();
         if (addressTimeout) clearTimeout(addressTimeout);
 
-        function fetchAddressStats(longpoll){
+        function fetchAddressStats(){
             xhrAddressPoll = $.ajax({
                 url: api + '/stats_address',
                 data: {
                     address: address,
-                    longpoll: longpoll
                 },
                 dataType: 'json',
                 cache: 'false',
@@ -521,7 +529,7 @@
 
                         if (addressTimeout) clearTimeout(addressTimeout);
                         addressTimeout = setTimeout(function(){
-                            fetchAddressStats(false);
+                            fetchAddressStats();
                         }, 2000);
 
                         return;
@@ -540,6 +548,13 @@
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
 
+                    if (data.stats.payout_estimate != undefined) {
+                        if (!$('#nextPaymentEstimate').is(":visible")) {
+                            $('#nextPaymentEstimate').show();
+                        }
+                        updateText('yourNextPaymentEstimate', data.stats.payout_estimate);
+                    }
+
                     renderPayments(data.payments);
 
                     $('.yourStats').show(function(){
@@ -557,7 +572,7 @@
 
                     docCookies.setItem('mining_address', address, Infinity);
 
-                    fetchAddressStats(true);
+                    fetchAddressStats();
                     
                 },
                 error: function(e){
@@ -566,13 +581,13 @@
 
                     if (addressTimeout) clearTimeout(addressTimeout);
                     addressTimeout = setTimeout(function(){
-                        fetchAddressStats(false);
+                        fetchAddressStats();
                     }, 2000);
                     
                 }
             });
         }
-        fetchAddressStats(false);
+        fetchAddressStats();
     });
     
     var urlWalletAddress = location.search.split('wallet=')[1] || 0;

@@ -96,6 +96,14 @@ Explanation for each field:
     /* How many seconds until we consider a miner disconnected. */
     "minerTimeout": 900,
 
+    /* These cryptonote address prefixes are used to check whether the
+       miner supplied a valid address. The values below are for sumokoin
+       wallet and subaddresses. If you use a different coin than you must
+       update the values here. */
+    "allowedMinerAddressPrefixes": [
+      "2864026", "536986"
+    ],
+
     "ports": [
         {
             "port": 3333, //Port for mining apps to connect to
@@ -171,9 +179,12 @@ Explanation for each field:
     "minPayment": 2000000000, //miner balance required before sending payment
     "maxTransactionAmount": 500000000000, //split transactions by this amount(to prevent "too big transaction" error)
     "denomination": 10000000, //truncate to this precision and store remainder
-	"useDynamicTransferFee": true, // use (simple) dynamic transfer fee
-	"transferFeePerPayee": 4000000, // dynamic transfer fee per payee/transaction
-	"minerPayFee": true // miner pays (dynamic) transfer fee instead of pool owner 
+  	"useDynamicTransferFee": true, // use (simple) dynamic transfer fee
+  	"transferFeePerPayee": 4000000, // dynamic transfer fee per payee/transaction
+  	"minerPayFee": true, // miner pays (dynamic) transfer fee instead of pool owner 
+    // When the block reward is a non-zero value; it will be used to provide a
+    // payout estimate in the miner statistics.
+    "blockReward": 0
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
