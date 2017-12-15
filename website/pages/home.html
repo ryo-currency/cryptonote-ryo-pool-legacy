@@ -490,6 +490,7 @@
 
     var xhrAddressPoll;
     var addressTimeout;
+    var addressInterval;
 
     $('#lookUp').click(function(){
 
@@ -507,10 +508,12 @@
         $('#lookUp > span:last-child').show();
 
 
-        if (xhrAddressPoll) xhrAddressPoll.abort();
         if (addressTimeout) clearTimeout(addressTimeout);
+        if (addressInterval) clearInterval(addressInterval);
 
         function fetchAddressStats(){
+            if (xhrAddressPoll) xhrAddressPoll.abort();
+
             xhrAddressPoll = $.ajax({
                 url: api + '/stats_address',
                 data: {
@@ -568,12 +571,7 @@
                         });
                     });
                     
-                    
-
                     docCookies.setItem('mining_address', address, Infinity);
-
-                    fetchAddressStats();
-                    
                 },
                 error: function(e){
                     if (e.statusText === 'abort') return;
@@ -588,6 +586,7 @@
             });
         }
         fetchAddressStats();
+        addressInterval = setInterval(function(){ fetchAddressStats(); }, 2000);
     });
     
     var urlWalletAddress = location.search.split('wallet=')[1] || 0;
