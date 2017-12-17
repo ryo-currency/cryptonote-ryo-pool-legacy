@@ -1,0 +1,79 @@
+<h2>Contact</h2>
+<script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
+
+<script>
+$('#addressSetButton').click(function(){
+  var address = $('#yourAddress').val();
+  fetchAddressWorkers(address);
+});
+
+function fetchAddressWorkers(address) {
+  $.ajax({
+    url: api + '/stats_address',
+    data: {
+      address: address,
+    },
+    dataType: 'json',
+    cache: 'false',
+    success: function(data){                    
+      var first = true;
+      for (var i=0; i<data.workers.length; i++) {
+        getWorkerGraphData(data.workers[i], address, function(graphData) {
+          if (first) {
+            Plotly.newPlot('worker_chart', graphData);
+            first = false;
+          } else {
+            Plotly.update('worker_chart', graphData);
+          }
+        });
+      }
+
+      $("#worker_chart").show();
+    }
+  });
+}
+
+function getWorkerGraphData(worker, address, dataHandler) {
+  var worker_address = address + '+' + worker;
+  $.ajax({
+    url: api + '/stats_worker',
+    data: {
+      address: worker_address,
+    },
+    dataType: 'json',
+    cache: 'false',
+    success: function(data){                    
+      var $template = $("#worker_chart").html();
+      var graphData = {
+        names: [],
+        values: []
+      };
+
+      for (var i = 0; i< data['charts']['hashrate'].length; i++) {
+        xy = data['charts']['hashrate'][i];
+        graphData.names.push(new Date(xy[0]*1000).toUTCString());
+        graphData.values.push(xy[1]);
+      }
+
+      dataHandler([{ x: graphData.names, y: graphData.values, type: 'scatter' }]);
+    }
+  });
+}
+</script>
+
+
+<div class="form-group">
+  <label class="col-sm-2 col-form-label col-form-label-lg" for="yourAddress">Sumo address:</label>
+  <div class="col-sm-10">
+    <input class="form-control" id="yourAddress" type="text" placeholder="Enter Your Address">
+  </div>
+  <span>
+    <button class="btn btn-default" type="button" id="addressSetButton">
+      <span><i class="fa fa-check"></i> Go</span>
+    </button>
+  </span>
+</div>
+
+<div id="worker_chart" style="width:600px;height:250px; display:none"></div>
+<div id="graphs">
+</div>
