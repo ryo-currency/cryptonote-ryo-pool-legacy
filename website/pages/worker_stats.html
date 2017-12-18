@@ -24,6 +24,7 @@ function loadScript(url, callback){
 }
 
 $('#addressSetButton').click(function(){
+  $("#graphs").empty();
   var address = $('#yourAddress').val();
   fetchAddressWorkers(address);
 });
