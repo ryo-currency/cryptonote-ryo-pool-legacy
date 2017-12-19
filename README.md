@@ -6,28 +6,37 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 ## Recent changes
 
-##### Health monitoring
+**Health monitoring**
 A new /health API handler was added and can be called by miners to learn
 whether the pool is healthy (e.g wallet is reachable). The UI was also
 updated and calles this handler regularly: when the health is not OK a
 red message will inform pool visitors about this.
 
-##### Proxy X-Forwarded-For support
+**Proxy X-Forwarded-For support**
 In the configuration you can indicate whether your pool deployment is
 behind a proxy. When you do this than the pool will take the client IP
 (which can give unauthenticated access to the admin interface) from the
 X-Forwarded-IP header that the proxy sets.
 
-##### Email notifications
+**Email notifications**
 Miners can configure an email to receive notifications whenever they receive a
 payment. More notifications will be added in the future (e.g. when a block is
 found).
 
-##### Miner can configure payout minimum
+**Miner can configure payout minimum**
 Miner can configure the minimum amount of sumo for their payments.
 
-##### Subaddresses support
+**Subaddresses support**
 You can now mine using a subaddress as your login.
+
+**Payout estimation**
+In your mining stats you will now see a payout estimate. This gives an idea what
+the payout will be when a next block is found.
+
+**Miner worker statistics**
+We added a miner worker statistics page. Instead of viewing hashrate statistics
+consolidated per wallet address; you can now view them for each of your
+individual worker.
 
 
 ## Basic features
