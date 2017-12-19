@@ -4,7 +4,7 @@ Usage
 
 #### Requirements
 * Coin daemon(s) (find the coin's repo and build latest version from source)
-* [Node.js](http://nodejs.org/) v0.10+ ([follow these installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager))
+* [Node.js](http://nodejs.org/) v4+ ([follow these installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager))
 * [Redis](http://redis.io/) key-value store v2.6+ ([follow these instructions](http://redis.io/topics/quickstart))
 * libssl required for the node-multi-hashing module
   * For Ubuntu: `sudo apt-get install libssl-dev`
@@ -32,7 +32,7 @@ sudo apt-get install git redis-server libboost1.55-all-dev nodejs-dev nodejs-leg
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/billaue2/cryptonote-sumokoin-pool.git pool
+git clone https://github.com/SadBatman/cryptonote-sumokoin-pool.git pool
 cd pool
 npm update
 ```
@@ -181,7 +181,7 @@ Explanation for each field:
     "denomination": 10000000, //truncate to this precision and store remainder
   	"useDynamicTransferFee": true, // use (simple) dynamic transfer fee
   	"transferFeePerPayee": 4000000, // dynamic transfer fee per payee/transaction
-  	"minerPayFee": true, // miner pays (dynamic) transfer fee instead of pool owner 
+  	"minerPayFee": true, // miner pays (dynamic) transfer fee instead of pool owner
     // When the block reward is a non-zero value; it will be used to provide a
     // payout estimate in the miner statistics.
     "blockReward": 0
@@ -301,20 +301,19 @@ Explanation for each field:
     }
 ```
 
-#### 3) [Optional] Configure cryptonote-easy-miner for your pool
-Your miners that are Windows users can use [cryptonote-easy-miner](https://github.com/zone117x/cryptonote-easy-miner)
-which will automatically generate their wallet address and stratup multiple threads of simpleminer. You can download
-it and edit the `config.ini` file to point to your own pool.
-Inside the `easyminer` folder, edit `config.init` to point to your pool details
-```ini
-pool_host=example.com
-pool_port=5555
+#### 3) Start the pool
+
+First make sure that the sumokoind and sumo-wallet-rpc daemons are running:
+
+```bash
+./sumokoind --detach
+./sumo-wallet-rpc --wallet-file=<wallet name> --rpc-bind-port <wallet port>
 ```
 
-Rezip and upload to your server or a file host. Then change the `easyminerDownload` link in your `config.json` file to
-point to your zip file.
+When both are running it's worth to make sure the sumokoind has it's blockchain
+synced. If this is not the case your pool will show errors with "Core is busy"
+until sumokoind is synchronized.
 
-#### 4) Start the pool
 
 ```bash
 node init.js
@@ -343,7 +342,7 @@ node init.js -module=api
 [Example screenshot](http://i.imgur.com/SEgrI3b.png) of running the pool in single module mode with tmux.
 
 
-#### 5) Host the front-end
+#### 4) Host the front-end
 
 Simply host the contents of the `website_example` directory on file server capable of serving simple static files.
 
@@ -403,10 +402,9 @@ the Node.js modules, and any config files that may have been changed.
 
 ### Setting up Testnet
 
-Monero does have a testnet. Call daemon and simplewallet with --tesnet to connect to it.
-Downloading the testnet blockchain may still take a while to start usint testnet, so you can use this excellent 
-tutorial http://moneroexamples.github.io/private-testnet/ to set up a private testnet. Should work with other 
-coins, too, but below are original testnet instructions by server43 for reference, too.
+Sumokoin does have a testnet. Call daemon and simplewallet with --tesnet to connect to it.
+Downloading the testnet blockchain may still take a while to start usint testnet, so you can use this excellent
+ Monero tutorial, which also applies to Sumokoin, at http://moneroexamples.github.io/private-testnet/ to set up a private testnet.
 
 For cryptonote based coins that don't have a testnet mode (yet), you can effectively create a testnet with the following steps:
 
