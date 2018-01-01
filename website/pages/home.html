@@ -150,15 +150,15 @@
         <div id="chartHashrate" data-chart="hashrate">
             <div class="chart"></div>
             <!-- <p class="text-center" id="cur_hashrate">-</p> -->
-        </div>        
+        </div>
     </div>
-    <div class="col-sm-20 chartWrap">        
+    <div class="col-sm-20 chartWrap">
         <h4>Workers</h4>
         <div id="chartWorkers" data-chart="workers">
             <div class="chart"></div>
             <!-- <p class="text-center" id="cur_workers">-</p> -->
-        </div> 
-    </div>    
+        </div>
+    </div>
 
     <script>
         var currencyGraphStat = {
@@ -172,7 +172,7 @@
             maxSpotColor: null,
             highlightLineColor: '#f08000',
             highlightSpotColor: '#ff5656',
-            spotRadius: 3,        
+            spotRadius: 3,
             chartRangeMin: 0,
             drawNormalOnTop: false,
             tooltipFormat: '<b>{{y}}</b>, {{offset:names}}'
@@ -262,7 +262,7 @@
             <!-- <div class="yourStats"><i class="fa fa-key"></i> Address: <span id="yourAddressDisplay"></span></div> -->
             <div class="yourStats"><i class="fa fa-bank"></i> Pending Balance: <span id="yourPendingBalance"></span></div>
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
-            <div id="nextPaymentEstimate" class="yourStats"><i class="fa fa-money"></i> Next payment: 
+            <div id="nextPaymentEstimate" class="yourStats"><i class="fa fa-money"></i> Next payment:
                 <span id="yourNextPaymentEstimate"> SUMO</span>
                 <span data-toggle="tooltip" title="A rough estimate of the payment you'd get if a block was found RIGHT NOW."
                       class="fa fa-question-circle">
@@ -272,24 +272,24 @@
             <div class="yourStats"><i class="fa fa-tachometer"></i> Hash Rate: <span id="yourHashrateHolder"></span></div>
             <div class="yourStats"><i class="fa fa-cloud-upload"></i> Total Hashes Submitted: <span id="yourHashes"></span></div>
         </div>
-        <div class="col-sm-4">            
+        <div class="col-sm-4">
             <div class="userChart" data-chart="user_hashrate">
                 <h4>Hash Rate</h4>
                 <div class="chart">
-                    
-                </div>                
+
+                </div>
             </div>
-        </div> 
+        </div>
         <div class="col-sm-4">
             <div class="userChart" data-chart="user_payments">
                 <h4>Payments</h4>
                 <div class="chart">
-                    
-                </div> 
+
+                </div>
             </div>
-        </div>       
+        </div>
     </div>
-    
+
 
     <br class="yourStats">
 
@@ -521,7 +521,7 @@
                 },
                 dataType: 'json',
                 cache: 'false',
-                success: function(data){                    
+                success: function(data){
 
                     $('#lookUp > span:last-child').hide();
                     $('#lookUp > span:first-child').show();
@@ -529,12 +529,6 @@
                     if (!data.stats){
                         $('.yourStats, .userChart').hide();
                         $('#addressError').text(data.error).show();
-
-                        if (addressTimeout) clearTimeout(addressTimeout);
-                        addressTimeout = setTimeout(function(){
-                            fetchAddressStats();
-                        }, 2000);
-
                         return;
                     }
 
@@ -562,33 +556,27 @@
 
                     $('.yourStats').show(function(){
                         xhrRenderUserCharts = $.ajax({
-                            url: api + '/stats_address?address=' + address + '&longpoll=false',            
+                            url: api + '/stats_address?address=' + address + '&longpoll=false',
                             cache: false,
-                            dataType: 'json',            
+                            dataType: 'json',
                             success: function(data) {
-                                createUserCharts(data);                                
+                                createUserCharts(data);
                             }
                         });
                     });
-                    
+
                     docCookies.setItem('mining_address', address, Infinity);
                 },
                 error: function(e){
                     if (e.statusText === 'abort') return;
                     $('#addressError').text('Connection error').show();
-
-                    if (addressTimeout) clearTimeout(addressTimeout);
-                    addressTimeout = setTimeout(function(){
-                        fetchAddressStats();
-                    }, 2000);
-                    
                 }
             });
         }
         fetchAddressStats();
         addressInterval = setInterval(function(){ fetchAddressStats(); }, 2000);
     });
-    
+
     var urlWalletAddress = location.search.split('wallet=')[1] || 0;
 
     var address = urlWalletAddress || docCookies.getItem('mining_address');
@@ -646,13 +634,13 @@
                 graphData.names.push(new Date(xy[0]*1000).toUTCString());
                 graphData.values.push(fixValueToCoins ? getReadableCoins(xy[1], 4, true) : xy[1]);
             }
-        }        
-       
-        
+        }
+
+
         return graphData;
     }
 
-    function createCharts(data) {         
+    function createCharts(data) {
         if (data.hasOwnProperty("charts")) {
     	    var graphData = {
     		    profit: getGraphData(data.charts.profit),
@@ -661,7 +649,7 @@
     		    price: getGraphData(data.charts.price),
     		    workers: getGraphData(data.charts.workers)
     	    };
-            
+
     	    for(var graphType in graphData) {
     		    if(graphData[graphType].values.length > 1) {
                     var settings = jQuery.extend({}, currencyGraphStat);
@@ -674,25 +662,25 @@
         }
     }
 
-    function loadStatistics () {        
+    function loadStatistics () {
         $.get(api + '/stats', function (stats) {
             if (stats) {
                 showStats(stats)
             }
-        });      
+        });
     }
 
     function showStats (stats) {
         $('#cur_diff').text(stats.network.difficulty);
         $('#cur_hashrate').text(getReadableHashRateString(stats.pool.hashrate) + '/s');
-        $('#cur_workers').text(stats.pool.miners);        
+        $('#cur_workers').text(stats.pool.miners);
 
         // Some values aren't available in stats.
         // Get the values from charts data.
-        
+
         if (stats.hasOwnProperty('charts')) {
             var priceData = stats.charts.price;
-            $('#cur_price').text(priceData ? priceData[priceData.length-1][1] : '---'); 
+            $('#cur_price').text(priceData ? priceData[priceData.length-1][1] : '---');
         }
         if (stats.hasOwnProperty('charts')) {
             var profitValue;
@@ -710,21 +698,21 @@
             else {
                 profitValue = '---';
             }
-            $('#cur_profit').html(profitValue);           
+            $('#cur_profit').html(profitValue);
        }
     }
 
 
 
-    
+
     var xhrRenderCharts;
 
     $(function(){
         xhrRenderCharts = $.ajax({
             url: api + '/stats',
-            cache: false,            
+            cache: false,
             success: createCharts
-        });               
+        });
     });
 
 
