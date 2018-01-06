@@ -56,7 +56,7 @@
                 "desc": "High end hardware"
             },
             {
-                "port": 5555,
+                "port": 5556,
                 "difficulty": 20000,
                 "desc": "High end hardware (SSL protected)",
                 "type": "SSL"
