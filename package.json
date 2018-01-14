@@ -19,6 +19,6 @@
         "cryptonote-util": "git://github.com/M5M400/node-cryptonote-util.git#xmr-Nan-2.0"
     },
     "engines": {
-        "node": ">=0.10"
+        "node": ">=4.0"
     }
 }
