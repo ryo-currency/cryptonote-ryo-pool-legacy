@@ -86,10 +86,10 @@
   <h1>Welcome to pool.sumokoin.ch</H1>
   <br>
   <ul>
+    <li>Join our <a href="https://t.me/joinchat/Hkpz6gesRNoo6EdOqnzq6Q">Telegram group</a></li>
     <li>Location: Germany (Google datacenter)</li>
     <li>The code that runs this pool can be found on <a href="https://github.com/SadBatman/cryptonote-sumokoin-pool/tree/pool.sumokoin.ch">GitHub</a></li>
-    <li>Improvements made to this pool's code are fed back to the Sumokoin project (see <a href="https://github.com/sumoprojects/cryptonote-sumokoin-pool/pulls">pull requests</a>).</li>
-    <li>We have SSL ports and email notifications for miners.</li>
+    <li>We have SSL ports, worker stats and email notifications for miners.</li>
  </ul>
 </div>
 
@@ -112,6 +112,11 @@
         <div id="donations"><i class="fa fa-gift"></i> Donations: <span id="poolDonations"></span></div>
         <div><i class="fa fa-money"></i> Total Pool Fee: <span id="poolFee"></span></div>
         <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
+        <div>
+          <i class="fa fa-microchip"></i> Pool load: <span id="poolLoad"></span>
+          <span data-toggle="tooltip" title="The average system load of the last 15 minutes. The closer this gets to 1, the more overloaded the pool is." class="fa fa-question-circle">
+          </span>
+        </div>
     </div>
 
     <div class="col-md-4 stats marketRate">
@@ -366,6 +371,11 @@
             }
 
             updateText('poolFee', floatToString(totalFee) + '%');
+
+            // Get the 15 minute average load.
+            var averageLoad = lastStats.system.load[2];
+            averageLoad = averageLoad / lastStats.system.number_cores;
+            updateText('poolLoad', averageLoad.toFixed(2));
 
 
             updateText('blockSolvedTime', getReadableTime(lastStats.network.difficulty / lastStats.pool.hashrate));
