@@ -40,6 +40,7 @@
 	function renderData(data) {
 		$('#totalOwed').text(getReadableCoins(data.totalOwed));
 		$('#totalPaid').text(getReadableCoins(data.totalPaid));
+		$('#totalPayments').text(getReadableCoins(data.totalPayments));
 		$('#totalMined').text(getReadableCoins(data.totalRevenue));
 		$('#profit').text(getReadableCoins(data.totalRevenue - data.totalOwed - data.totalPaid));
 		$('#averageLuck').html(formatLuck(data.totalDiff, data.totalShares));
@@ -55,6 +56,10 @@
 	<div class="col-sm-3 color1">
 		<h4>Total Owed</h4>
 		<span class="statValue" id="totalOwed">...</span>
+	</div>
+	<div class="col-sm-3 color2">
+		<h4>Total Payments</h4>
+		<span class="statValue" id="totalPayments">...</span>
 	</div>
 	<div class="col-sm-3 color2">
 		<h4>Total Paid</h4>
