@@ -107,13 +107,14 @@
     <div class="col-md-4 stats">
         <h3>Our Pool</h3>
         <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="poolHashrate"></span></div>
-        <div><i class="fa fa-clock-o"></i> Block Found: <span id="poolLastBlockFound"></span></div>
         <div><i class="fa fa-users"></i> Connected Miners: <span id="poolMiners"></span></div>
+        <div><i class="fa fa-clock-o"></i> Block Found: <span id="poolLastBlockFound"></span></div>
+        <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
         <div id="donations"><i class="fa fa-gift"></i> Donations: <span id="poolDonations"></span></div>
         <div><i class="fa fa-money"></i> Total Pool Fee: <span id="poolFee"></span></div>
-        <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
+        <div><i class="fa fa-star-half-o"></i>Current Block Effort: <span id="currentEffort"></span></div>
         <div>
-          <i class="fa fa-microchip"></i> Pool load: <span id="poolLoad"></span>
+          <i class="fa fa-rocket"></i> Pool load: <span id="poolLoad"></span>
           <span data-toggle="tooltip" title="The average system load of the last 15 minutes. The closer this gets to 1, the more overloaded the pool is." class="fa fa-question-circle">
           </span>
         </div>
@@ -380,6 +381,7 @@
 
             updateText('blockSolvedTime', getReadableTime(lastStats.network.difficulty / lastStats.pool.hashrate));
             updateText('calcHashSymbol', lastStats.config.symbol);
+            updateText('currentEffort', (lastStats.pool.roundHashes / lastStats.network.difficulty * 100).toFixed(1) + '%');
 
             calcEstimateProfit();
         }
