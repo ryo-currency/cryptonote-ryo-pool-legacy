@@ -1,4 +1,4 @@
-var api = "https://pool.ryo-currency.com:8118";
+var api = "http://pool.ryo-currency.com:8118";
 
 var poolHost = "pool.ryo-currency.com";
 
