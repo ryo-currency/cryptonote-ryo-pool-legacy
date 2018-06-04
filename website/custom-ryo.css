@@ -1,0 +1,20 @@
+body {
+    background-image: url(themes/img/subtle_carbon.png);
+}
+
+.navbar-brand {
+    text-indent: -9999px;
+    background: url(/themes/img/logo-small.png) center center no-repeat;
+    margin: 1px 40px 1px 0;
+    padding: 0;
+    width: 149px;
+    height: 48px;
+}
+
+.d-none {
+    display:none !important;
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}

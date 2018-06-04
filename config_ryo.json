@@ -1,6 +1,6 @@
 {
-    "coin": "Sumokoin",
-    "symbol": "SUMO",
+    "coin": "Ryo",
+    "symbol": "RYO",
     "coinUnits": 1000000000,
     "coinDifficultyTarget": 240,
 
@@ -19,9 +19,9 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "Sumoo64zh7dRFyB8dgDWZMLmzKBgGXYWZCG4NBF2VcvzEuiSQpMjyyiYJ1Ra696pZu56PPFQNBDdB1rZjyeX1RVKeWZgHg7pTxj",
+        "poolAddress": "Sumoo3gSiXgQNy68RpFCv8BuhNWr1cwKugkzRwWKfEQ8aRJPvLEcvjR5tJHEjuX3jVFkTbpx7XQtT8sz8tZ7WH5rf3LsiBbZz3G",
         "blockRefreshInterval": 1000,
-        "minerTimeout": 900,
+        "minerTimeout": 1800,
         "sslKey": "key.pem",
         "sslCert": "cert.pem",
         "allowedMinerAddressPrefixes": [
@@ -114,7 +114,7 @@
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
         "minerPayFee": true,
-        "blockReward": 36.45
+        "blockReward": 41.97
     },
 
     "blockUnlocker": {

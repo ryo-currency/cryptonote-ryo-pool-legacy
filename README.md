@@ -1,7 +1,9 @@
-An updated cryptonote-sumokoin-pool fork
+An updated cryptonote-universal-pool fork
 ========================================
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
+Based on SadBatman's excellent updates to the original pool software. [View original repo on GitHub](https://github.com/SadBatman/cryptonote-sumokoin-pool)
+
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Ryo, Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 ## Recent changes
@@ -24,7 +26,7 @@ payment. More notifications will be added in the future (e.g. when a block is
 found).
 
 **Miner can configure payout minimum**
-Miner can configure the minimum amount of sumo for their payments.
+Miner can configure the minimum amount of ryo for their payments.
 
 **Subaddresses support**
 You can now mine using a subaddress as your login.
@@ -89,15 +91,14 @@ individual worker.
 
 ## Pools Using This Software
 
-* https://pool.sumokoin.com
-* https://pool.sumokoin.ch
+* https://pool.ryo-currency.com/
 
-More pools can be found on [sumopools.com](https://www.sumopools.com)
+More pools can be found on [ryo-currency.com](https://ryo-currency.com/)
 
 ## Usage
 
 Visit the usage guide here.
-[Visit the usage guide here](https://github.com/SadBatman/cryptonote-sumokoin-pool/blob/master/USAGE.md)
+[Visit the usage guide here](https://github.com/ryo-currency/cryptonote-ryo-pool)
 
 
 ## License

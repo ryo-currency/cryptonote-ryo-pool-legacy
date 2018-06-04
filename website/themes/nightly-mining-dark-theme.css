@@ -7,7 +7,7 @@ a:hover {
 body {  
   color: #ffffff;
   background-color: #333333;
-  background-image: url(http://subtlepatterns.com/patterns/subtle_carbon.png);  
+/*  background-image: url(http://subtlepatterns.com/patterns/subtle_carbon.png);   */
 }
 .form-control {
   background-color: #131313;

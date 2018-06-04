@@ -1,17 +1,17 @@
-var api = "https://pool.sumokoin.ch:8888";
+var api = "https://pool.ryo-currency.com:8118";
 
-var poolHost = "pool.sumokoin.ch";
+var poolHost = "pool.ryo-currency.com";
 
-var irc = "irc.freenode.net/#sumokoin";
+var irc = "";
 
-var email = "support@sumokoin.ch";
+var email = "contact@ryo-currency.com";
 
-var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
+var cryptonatorWidget = ["RYO-BTC", "RYO-USD", "BTC-USD"];
 
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
 
-var blockchainExplorer = "http://explorer.sumokoin.com/block/{id}";
+var blockchainExplorer = "http://explorer.ryo-currency.com/block/{id}";
 
-var transactionExplorer = "http://explorer.sumokoin.com/tx/{id}";
+var transactionExplorer = "http://explorer.ryo-currency.com/tx/{id}";
 
-var themeCss = "themes/default-theme.css";
+var themeCss = "themes/nightly-mining-dark-theme.css";
