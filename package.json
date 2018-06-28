@@ -15,8 +15,8 @@
         "dateformat": "*",
         "base58-native": "*",
         "mailgun.js": "*",
-        "multi-hashing": "git://github.com/quangvu3/node-multi-hashing.git#Nan-2.0",
-        "cryptonote-util": "git://github.com/M5M400/node-cryptonote-util.git#xmr-Nan-2.0"
+        "multi-hashing": "git://github.com/ryo-currency/node-multi-hashing.git",
+        "cryptonote-util": "git://github.com/ryo-currency/node-cryptonote-util.git"
     },
     "engines": {
         "node": ">=4.0"
