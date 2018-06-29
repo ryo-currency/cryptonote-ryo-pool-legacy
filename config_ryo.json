@@ -24,6 +24,7 @@
         "minerTimeout": 1800,
         "sslKey": "key.pem",
         "sslCert": "cert.pem",
+	"addressValidatorBin": false,
         "allowedMinerAddressPrefixes": [
           "2864026", "536986"
         ],
