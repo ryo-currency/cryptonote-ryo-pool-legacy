@@ -101,10 +101,9 @@ Explanation for each field:
        be ignored and this tool will be used instead. The tool will check
        that the address is both valid and on the same network (testnet,
        mainnet, etc). Set to false to disable this check and use default
-       allowedMinerAddressPrefixes method.
-       Example: "/opt/ryo-currency/build/release/bin/ryo-address-validator"
-       */
-    "addressValidatorBin": "/opt/ryo-currency/build/release/bin/ryo-address-validator",
+       allowedMinerAddressPrefixes method. Copy the binary to the bin
+       folder within this pool directory, or set an absolute path. */
+    "addressValidatorBin": "bin/ryo-address-validator",
 
     /* These cryptonote address prefixes are used to check whether the
        miner supplied a valid address. The values below are for sumokoin
