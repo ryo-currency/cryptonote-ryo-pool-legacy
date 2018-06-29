@@ -96,6 +96,16 @@ Explanation for each field:
     /* How many seconds until we consider a miner disconnected. */
     "minerTimeout": 900,
 
+    /* Optionally set the path to the address validator tool included
+       with the coin's release. If set, allowedMinerAddressPrefixes will
+       be ignored and this tool will be used instead. The tool will check
+       that the address is both valid and on the same network (testnet,
+       mainnet, etc). Set to false to disable this check and use default
+       allowedMinerAddressPrefixes method.
+       Example: "/opt/ryo-currency/build/release/bin/ryo-address-validator"
+       */
+    "addressValidatorBin": "/opt/ryo-currency/build/release/bin/ryo-address-validator",
+
     /* These cryptonote address prefixes are used to check whether the
        miner supplied a valid address. The values below are for sumokoin
        wallet and subaddresses. If you use a different coin than you must
