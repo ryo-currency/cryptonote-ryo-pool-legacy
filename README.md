@@ -1,4 +1,8 @@
-An updated cryptonote-universal-pool fork
+# Deprecated
+
+This pool software is no longer maintained, please use the updated version here: https://github.com/ryo-currency/cryptonote-ryo-pool
+
+A cryptonote-universal-pool fork
 ========================================
 
 Based on SadBatman's excellent updates to the original pool software. [View original repo on GitHub](https://github.com/SadBatman/cryptonote-sumokoin-pool)
